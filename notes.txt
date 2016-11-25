@@ -1,0 +1,3 @@
+Color Scheme:
+http://paletton.com/
+Base RGB: 2E4272
