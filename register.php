@@ -1,5 +1,7 @@
 <?php
 
+  //php section called when form is submitted.  User information is gathered from fields
+  //then sanitized and password hashed.  then inserted into the db
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     require('include/dbConnect.php');
     require('include/password_compat-master/lib/password.php');
@@ -78,7 +80,7 @@
     else{
       echo "Error - Could not register user!";
     }
-  } 
+  }
   else{
     echo "continue";
   }

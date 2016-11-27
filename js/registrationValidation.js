@@ -1,3 +1,4 @@
+//Initializes the registration forms validation using semantic-ui's form validation
 $(document).ready(function(){
   $('.ui.form').form({
       on: 'change',
@@ -88,8 +89,10 @@ $(document).ready(function(){
     });
 });
 
+
+//called after successful submission of the form
 function validateForm(){
 
-  alert("hello");
+  alert("Registration Successful");
   return true;
 }
