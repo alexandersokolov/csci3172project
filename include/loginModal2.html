@@ -1,20 +1,8 @@
 <script>
 
-    //Hides the visibility or the error message in the form
-
-    /*
-     function hideFormMessage()
-     {
-     document.getElementById("failureMessage").style.visibility = "hidden";
-     }
-     */
-
-
-
     function validateLog()
     {
-
-
+        //Small note: variable and form names indicate email, but in reality it is the username
         var email = document.forms["logForm"]["email"].value;
         var password = document.forms["logForm"]["password"].value;
 
@@ -57,7 +45,7 @@
 
             //Sending http request to the php file for validation
             request = new XMLHttpRequest();
-            request.open("POST", "php/loginValidate.php", true);
+            request.open("POST", "include/loginValidate.php", true);
             request.setRequestHeader("Content-type", "application/json");
 
             //Testing new way of doing stuff
@@ -76,7 +64,7 @@
                     {
 
                         //Needs to initialize session variable for php
-                            //here
+                            //HERE
 
                         $('.ui.modal.login')
                                 .modal('hide')
@@ -92,11 +80,6 @@
 
                 }
             }
-
-
-            //  console.log(response.answer);
-
-            //REMEMBER TO FIX SIGNUP PAGE
 
 
         }
@@ -130,7 +113,7 @@
                     <div class="field" id="emailField">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="email" placeholder="E-mail address">
+                            <input type="text" name="email" placeholder="Username">
                         </div>
                     </div>
                     <div class="field" id="passwordField">

@@ -1,6 +1,6 @@
 <?php
   //$host = "db.cs.dal.ca";
-  $host = localhost;
+  $host = "localhost";
   $dbName = "csci3172project";
   $userName = "project";
   $password = "project";
