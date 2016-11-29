@@ -4,7 +4,6 @@
   //then sanitized and password hashed.  then inserted into the db
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     require('include/dbConnect.php');
-    require('include/password_compat-master/lib/password.php');
     require('include/utilities.php');
 
     $username = "";
@@ -121,14 +120,13 @@
 
 <!-- nav bar -->
 
-  <?php include("include/navBar.html"); ?>
+  <?php include("include/navBar.php"); ?>
 
 <!-- end of nav bar -->
 
 <!-- main content -->
   <div id="main_content">
     <?php include("include/registerForm.php"); ?>
-    <a href="test.php">test</a>
   </div>
 
 <!-- end main content -->

@@ -29,7 +29,7 @@
 
 <!-- START OF NAVBAR MENU -->
 
-<?php include("include/navBar.html"); ?>
+<?php include("include/navBar.php"); ?>
 
 <!-- END OF NAVBAR -->
 

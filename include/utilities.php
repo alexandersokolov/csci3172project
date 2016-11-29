@@ -1,4 +1,6 @@
 <?php
+  require('password_compat-master/lib/password.php');
+
   //sanitate the user input from malicious code
   //help from http://www.w3schools.com/php/php_form_validation.asp
   function mysql_fix_string($input){
