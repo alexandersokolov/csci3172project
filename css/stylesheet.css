@@ -81,3 +81,10 @@
   margin-right: 20%;
   margin-top:10%;
 }
+
+/* Hides the error message for the login form on load */
+#failureMessage
+{
+    display: none;
+}
+

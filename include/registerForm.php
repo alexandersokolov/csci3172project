@@ -1,4 +1,4 @@
-<form class="ui form" method="post" action="<?php echo htmlentities($_SEVER["PHP_SELF"]); ?>">
+<form class="ui form" method="post" action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>">
   <h1 class="ui dividing header">User Registration</h1>
 
   <br>

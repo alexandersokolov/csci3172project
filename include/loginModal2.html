@@ -1,6 +1,20 @@
 <script>
+
+    //Hides the visibility or the error message in the form
+
+    /*
+     function hideFormMessage()
+     {
+     document.getElementById("failureMessage").style.visibility = "hidden";
+     }
+     */
+
+
+
     function validateLog()
     {
+
+
         var email = document.forms["logForm"]["email"].value;
         var password = document.forms["logForm"]["password"].value;
 
@@ -17,9 +31,6 @@
             b.className += " error";
         }
 
-//        document.getElementById("whatever").className = "";
-        //      document.getElementById("whatever").className = "classToKeep";
-
         //Removes error field/stays the same
         if (email != "")
         {
@@ -33,6 +44,62 @@
             document.getElementById("passwordField").className = "field";
         }
 
+
+
+        if(email!="" && password !="")
+        {
+
+            //Storing the username and password in javascript objects then converting to JSON
+            var user = new Object();
+            user.email = email;
+            user.password = password;
+            var jsonString = JSON.stringify(user);
+
+            //Sending http request to the php file for validation
+            request = new XMLHttpRequest();
+            request.open("POST", "php/loginValidate.php", true);
+            request.setRequestHeader("Content-type", "application/json");
+
+            //Testing new way of doing stuff
+            request.send(jsonString);
+
+            request.onreadystatechange = processRequest;
+            function processRequest(e)
+            {
+                if (request.readyState == 4 && request.status == 200)
+                {
+                    var response = JSON.parse(request.responseText);
+                    console.log(response.answer);
+
+                    //If validation is true then php session variable should be set and the login modal should close
+                    if(response.answer=="true")
+                    {
+
+                        //Needs to initialize session variable for php
+                            //here
+
+                        $('.ui.modal.login')
+                                .modal('hide')
+                        ;
+                    }
+
+
+                    //If validation is false then error message should appear
+                    if(response.answer=="false")
+                    {
+                        document.getElementById("failureMessage").style.display = "block";
+                    }
+
+                }
+            }
+
+
+            //  console.log(response.answer);
+
+            //REMEMBER TO FIX SIGNUP PAGE
+
+
+        }
     }
 </script>
 
@@ -49,6 +116,17 @@
             </h2>
             <form class="ui large form" name="logForm" method="post">
                 <div class="ui stacked segment">
+
+                    <div id="failureMessage" class="ui negative message">
+                        <div class="header">
+                            We're sorry an error occured
+                        </div>
+                        <p>Username or password is incorrect</p>
+                    </div>
+
+
+
+
                     <div class="field" id="emailField">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
@@ -68,7 +146,7 @@
             </form>
 
             <div class="ui message">
-                New to us? <a href="#">Sign Up</a>
+                New to us? <a href="register.php">Sign Up</a>
             </div>
         </div>
     </div>

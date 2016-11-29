@@ -46,11 +46,23 @@
 
     }
 
-
+/*
     echo "Email: $email <br>";
     echo "Password: $password <br>";
     echo "LogBool: $logBool";
+*/
 
+    //Creates a JSON array based on if the passwords match or not
+    if($logBool==true)
+    {
+        $arr = array('answer'=>'true');
+    }
+    if($logBool!=true)
+    {
+        $arr = array('answer'=>'false');
+    }
+
+    echo json_encode($arr);
 
 
 ?>
