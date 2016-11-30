@@ -91,8 +91,24 @@
 
 .ui.center.aligned.segment{
   width: 50%;
-  padding: 5%;
-  margin-top: 5%;
+  padding: 2%;
+  padding-bottom: 2%;
+  margin-top: 4%;
   margin-left: 25%;
+  margin-bottom: 1%;
+  text-align: left;
 
 }
+/*
+the black version style, the problem is that it would change the footer style as well*/
+/*.ui.inverted.segment{
+  width: 50%;
+  padding: 2.5% 2.5% 2.5% 2.5%;
+  margin-top: 6%;
+  margin-left: 25%;
+  margin-bottom: 2%;
+}
+
+.ui.radio.checkbox label{
+  color: lightgrey;
+}*/
