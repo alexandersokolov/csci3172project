@@ -88,3 +88,11 @@
     display: none;
 }
 
+
+.ui.center.aligned.segment{
+  width: 50%;
+  padding: 5%;
+  margin-top: 5%;
+  margin-left: 25%;
+
+}
