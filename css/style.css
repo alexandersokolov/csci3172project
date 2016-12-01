@@ -1,0 +1,518 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background: #f6f6f6;
+	color: #666;
+	font-family: Open Sans,sans-serif !important;
+	margin: 0px;
+	padding: 0px;
+	}
+	
+* {
+	margin:  0px;
+	padding: 0px;
+	}
+
+a {
+	text-decoration: none !important;
+	color: #333;
+	}
+a:focus {
+	outline: 0px;
+	}
+
+li {
+	list-style: none;
+	}
+
+p {
+	font-size: 12px;
+	color: #999;
+		}
+
+h1, h2, h3, h4 {
+	color: #333;
+	font-weight: normal;
+	font-size: 20px;
+	font-family: Vani;
+	}
+ul, ol {
+	margin: 0px;
+	}
+	
+.container {
+	max-width: 1200px;
+	height:auto;
+	}
+	
+
+	
+
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10px;
+	height: 100%;
+	background: #fff;
+
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 10px;
+	background: #fff;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: #fff;
+	position: relative;
+}
+
+.jspDrag
+{
+	background: #000;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 10px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 10px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
+
+
+
+
+	
+	
+
+	/*       Contact Page         */
+
+
+.contact {
+	width:100%;
+	height: auto;
+	}
+	
+.contact h2 {
+	font-size: 22px;
+	color: #333;
+	}
+#map {
+	}
+	
+.map {
+	width: 100%;
+	height: auto;
+	/*padding: 7px;
+	border: 1px solid #CCC;*/
+
+	
+	
+	}
+iframe {
+max-width: 100%;
+height: auto;
+width: 100%; /*IE8 bug fix*/
+vertical-align: middle;
+height: 300px;
+padding-top: 5%;
+padding-right: 1%;
+padding-left: 1%;
+}
+
+i {
+	float: left;
+	margin-right: 10px;
+	}
+
+.icon-volume-down {
+	background-position:-384px -22px;
+	}
+.icon-envelope {
+	background-position: -72px 4px;
+	height: 16px;
+	}
+.address {
+	float:left;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	padding-left: 3%;
+	width: 30%;
+	height: auto;
+	}
+.address h3 {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 16px;
+	}
+.contact-address {
+	font-size: 12px;
+	color: #333;
+	line-height: 20px;
+	overflow: hidden;
+	}
+	
+.phone {
+	float: left;
+	height: auto;
+	}
+.email {
+	float: left;
+	line-height: 20px;
+	overflow: hidden;
+	}
+.email a {
+	text-decoration: none;
+	color: #EA3131;
+	}	
+.email a:hover {
+	text-decoration: underline;
+	color: #C42727;
+	}
+	
+.contact-txt {
+	float: right;
+	width: 70%;
+	height: auto;
+	padding-right: 3%;
+	padding-top: 2%;
+	}
+.contact-txt h3 {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 16px;
+	margin-bottom: 0px;
+	}
+	
+.contact-txt p {
+	color: #333;
+	font-size: 12px;
+	}
+	
+.contact-form {
+	margin: 20px 0px;
+	width: 100%;
+	height: auto;
+	}
+address {
+	margin-bottom: 0px;
+	}
+	
+.control-group {
+	float: right;
+	width: 70%;
+	}
+	
+.control-group textarea {
+	width: 98%;
+	}
+.form-horizontal .controls {
+	float: none;
+	margin-left: 0px;
+	}
+.form-horizontal .control-label {
+	text-align: left !important;
+	}
+.controls {
+	float: left;
+	}
+	
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+	width: 80%;
+	-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+
+	box-shadow: none;
+	}
+.contact-form input[type="text"], input[type="password"] {
+	width: 94%;
+	}
+
+.contact-form textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+	box-shadow: none;
+	border-color: #666;
+	}
+/*
+.form-horizontal input, .form-horizontal textarea {
+	width: 100%;
+	}
+*/
+	/*       End Contact Page         */
+	
+	
+	
+	
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+	
+	.logo {
+		margin-bottom: 8%;
+		}
+
+	.da-slider {
+		width:95%;
+	}
+	
+	.container {
+		width: 98%;
+		padding: 2%;
+	}
+
+
+	.ca-container {
+		padding: 2% !important;
+	}
+
+	.content-container{
+		width: 65%;
+		padding: 2%;
+	}
+ }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+	
+	.logo {
+		margin-bottom: 8%;
+		}
+
+	.da-slider {
+		width:95%;
+	}	
+	
+	.container {
+		width: 95%;
+		padding: 2%;
+		}
+
+	.ca-container {
+		padding: 2% !important;
+		}
+	
+ }
+ 
+ 
+ 
+ 	/*		Category page		*/
+	
+
+.category-container {
+
+	float: left;
+    width: 25%;
+    height: 100%;
+    padding-top: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
+    margin: auto;
+
+	}
+	
+.category-list h2 {
+	color: #685551;
+    font-family: Vani;
+    font-size: 22px;
+    margin-top: 20px;
+	margin-bottom: 0px;
+	padding: 10px 15px !important;
+	}
+	
+ul.category-product {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	}
+	
+ul.category-product li {
+	list-style: none;
+	border-top: 1px solid #CCC;
+
+	}
+	
+ul.category-product li:last-child {
+	border-bottom: 1px solid #ccc;
+	}
+	
+ul.category-product li a {
+	text-decoration: none;
+	color: #600;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 15px !important;
+	width: 100%;
+	display: block;
+	}
+	
+.category-st-dtls {
+	margin-top: 20px;
+	}
+	
+.category-nd-list {
+	position: relative;
+	width: 100%;
+	height:185px;
+	}
+	
+.category-nd-list h2 {
+	background-color: #6DDEE2;
+    height: 185px;
+    left: 0;
+    line-height: 1.2;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 95px;
+    z-index: 999;
+	}
+	
+.category-nd-list h2 span {
+	color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+    height: 30px;
+    left: 50%;
+    margin-left: -28%;
+    margin-top: -8%;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-90deg);
+    transform-origin: center center 0;
+    width: 55px;
+}
+
+.content-container {
+	float: left;
+    width: 65%;
+    padding-top: 2%;
+    padding-right: 1%;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin: auto;
+	} 
+
+
+.content-container a {
+	float: right;
+	width:60%;
+    word-wrap:break-word;
+    padding-left: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+	}
+
+
+.content-container a button{
+	float: right;
+	width:30%;
+    padding-left: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+	}
+
+.content-container a h3{
+	float: left;
+	width:50%;
+    word-wrap:break-word;
+    padding-left: 1px;
+	}
+.content-container a p{
+	float: left;
+	width:60%;
+    word-wrap:break-word;
+    padding-left: 1px;
+	}
+
+
