@@ -1,6 +1,40 @@
 <?php
   require 'include/accessControl.php';
+
+  require_once 'include/dbConnect.php';
+  require_once 'include/utilities.php';
+
+  $username = 'jason';
+
+  $sqlStatement = 'SELECT * FROM users WHERE username = :username';
+
+  try{
+    $s = $GLOBALS['pdo']->prepare($sqlStatement);
+    $s->bindValue(':username', $username, PDO::PARAM_STR);
+    $s->execute();
+
+    $result = $s->fetch();
+
+    if(count($result) > 1){
+      $username = $result['username'];
+      $password = $result['password'];
+      $email = $result['email'];
+      $firstName = $result['firstName'];
+      $lastName = $result['lastName'];
+      $addressOne = $result['addressOne'];
+      $addressTwo = $result['addressTwo'];
+      $province = $result['province'];
+      $postCode = $result['postCode'];
+
+    }
+
+  }
+  catch(PDOException $e){
+
+  }
+
  ?>
+
 
 <!-- Beginning of HTML -->
 
@@ -20,7 +54,6 @@
 
 
   <!-- Stylesheet Link -->
-  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
   <!-- js links -->
   <!-- jQuery -->
@@ -31,23 +64,23 @@
   <script src="js/registrationValidation.js"></script>
   <script src="js/mobileMenu.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+
 </head>
 
 <body>
 
 <!-- nav bar -->
 
-  <?php include("include/navBar.php"); ?>
+  <?php include 'include/navBar.php'; ?>
 
 <!-- end of nav bar -->
 
 <!-- main content -->
   <div id="main_content">
-    <h1> account home </h1>
     <?php
-      echo "stuff";
-      echo $_SESSION['username'];
-      echo $_SESSION['password'];
+        include 'include/accountForm.php';
       ?>
   </div>
 

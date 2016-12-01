@@ -3,8 +3,8 @@
   //php section called when form is submitted.  User information is gathered from fields
   //then sanitized and password hashed.  then inserted into the db
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    require('include/dbConnect.php');
-    require('include/utilities.php');
+    require 'include/dbConnect.php';
+    require 'include/utilities.php';
 
     $username = "";
     $password = "";
@@ -121,13 +121,13 @@
 
 <!-- nav bar -->
 
-  <?php include("include/navBar.php"); ?>
+  <?php include 'include/navBar.php'; ?>
 
 <!-- end of nav bar -->
 
 <!-- main content -->
   <div id="main_content">
-    <?php include("include/registerForm.php"); ?>
+    <?php include 'include/registerForm.php'; ?>
   </div>
 
 <!-- end main content -->

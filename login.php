@@ -38,7 +38,7 @@
 
 <!-- main content -->
   <div id="main_content">
-    <?php include("include/loginForm.php"); ?>
+    <?php include 'include/loginForm.php'; ?>
   </div>
 
 <!-- end main content -->
