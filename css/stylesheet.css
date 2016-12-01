@@ -32,6 +32,23 @@
     .ui.vertical.menu.navbar{
         margin-top: 0px !important;
     }
+
+    #main_content{
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-top: 8%;
+    }
+}
+
+@media (min-width: 767px) {
+  /* Main content are style info */
+  #main_content{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 8%;
+  }
 }
 
 .ui.vertical.menu{
@@ -74,13 +91,7 @@
     margin-right: 25%;
 }
 
-/* Main content are style info */
-#main_content{
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 8%;
-}
+
 
 /* Hides the error message for the login form on load */
 #failureMessage

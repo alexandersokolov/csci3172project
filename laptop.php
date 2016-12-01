@@ -4,6 +4,7 @@
     <!-- Title -->
     <title>Electronic Super Shop</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Semantic UI CSS -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
@@ -31,8 +32,8 @@
 
 <!-- START OF NAVBAR MENU -->
 
-<?php 
-    include("include/navBar.php"); 
+<?php
+    include("include/navBar.php");
 ?>
 
 <!-- END OF NAVBAR -->
@@ -127,7 +128,7 @@
     </a>
     <div class="ui tag labels">
     <a class="ui label">$549.99 </a>
-    </div>    
+    </div>
     <br>
 
     <div class="ui divider"></div>
@@ -137,7 +138,7 @@
     </a>
     <div class="ui tag labels">
     <a class="ui label" >$1530.99 </a>
-    </div>    
+    </div>
     <br>
 
     <div class="ui divider"></div>
@@ -148,7 +149,7 @@
     <div class="ui tag labels">
     <a class="ui label">$749.99 </a>
     <br>
-    </div>    
+    </div>
     <br>
 
 
@@ -160,10 +161,10 @@
     <div class="ui tag labels">
     <a class="ui label">$849.99 </a>
     <br>
-    </div>    
+    </div>
     <br>
 
- 
+
     <div class="ui divider"></div>
     <img class="ui top aligned small image" src="media/laptop/laptop5.png">
     <a><h3>Macbook Pro</h3> <p>15.6" HD 1366 x 768 pixel resolution <br> 4GB DDR3L SDRAM <br> 500GB HDD, 2-in-1 card reader</p>
@@ -172,7 +173,7 @@
     <div class="ui tag labels">
     <a class="ui label">$1529.99 </a>
     <br>
-    </div>    
+    </div>
     <br>
 
 
@@ -184,7 +185,7 @@
     <div class="ui tag labels">
     <a class="ui label">$960.99 </a>
     <br>
-    </div>    
+    </div>
     <br>
 
 
@@ -196,9 +197,9 @@
     <div class="ui tag labels">
     <a class="ui label">$979.99 </a>
     <br>
-    </div>  
-    <br>  
-    
+    </div>
+    <br>
+
 </div>
 
 

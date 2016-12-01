@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
   <title>ESS - User Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
   <!-- Semantic UI CSS -->
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.css">

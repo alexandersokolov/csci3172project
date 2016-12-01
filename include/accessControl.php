@@ -4,6 +4,7 @@
 
   session_start();
 
+
   $username = isset($_POST['username']) ? $_POST['username'] : $_SESSION['username'];
   $password = isset($_POST['password']) ? hashPass($_POST['password']) : $_SESSION['password'];
 
@@ -28,7 +29,7 @@
 
     if(count($result) > 1){
 
-      if($username != $result['username'] && !verifyHash($password, $result['password'])){
+      if($username != $result[0] && !verifyHash($password, $result[1])){
         header("Location: login.php");
       }
 

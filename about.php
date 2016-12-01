@@ -4,6 +4,7 @@
     <!-- Title -->
     <title>Electronic Super Shop</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Semantic UI CSS -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
@@ -36,8 +37,8 @@
     <h3>Address:</h3>
     <i class="home icon"></i>
     <div class="contact-address">
-        B block, 1no. road 
-        Halifax, NS, 
+        B block, 1no. road
+        Halifax, NS,
         Canada.
     </div>
 
@@ -47,7 +48,7 @@
         <i class="icon-print"></i>
             <i class="text telephone icon"></i>
             <div class="contact-address">
-                +1 800 119 6590 
+                +1 800 119 6590
             </div>
     </div>
     <br>
@@ -56,7 +57,7 @@
         <i class="icon-print"></i>
             <i class="mail icon"></i>
             <div class="contact-address">
-                awesome@shop.com 
+                awesome@shop.com
             </div>
     </div>
 </div><!--End address-->

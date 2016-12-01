@@ -4,6 +4,8 @@
     <!-- Title -->
     <title>Electronic Super Shop</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- Semantic UI CSS -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
@@ -49,10 +51,7 @@
     include "include/shoppingModal.html"
 ?>
 
-<!-- Footer -->
-<?php
-    include "include/footer.html"
-?>
+
 
 
 <!-- jQuery -->
@@ -109,4 +108,11 @@
 
 
 </body>
+
+<footer>
+  <!-- Footer -->
+  <?php
+      include "include/footer.html"
+  ?>
+</footer>
 </html>

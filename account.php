@@ -1,8 +1,8 @@
 <?php
   require 'include/accessControl.php';
 
-  require_once 'include/dbConnect.php';
-  require_once 'include/utilities.php';
+  include 'include/dbConnect.php';
+  //include_once 'include/utilities.php';
 
   $username = 'jason';
 
@@ -41,6 +41,7 @@
 <html lang="en">
 <head>
   <title>ESS - User Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Semantic UI CSS -->
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.css">
