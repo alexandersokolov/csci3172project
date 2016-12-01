@@ -28,7 +28,7 @@
 
     if(count($result) > 1){
 
-      if($username != $result[0] && !verifyHash($password, $result[1])){
+      if($username != $result['username'] && !verifyHash($password, $result['password'])){
         header("Location: login.php");
       }
 
