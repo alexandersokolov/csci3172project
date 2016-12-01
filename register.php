@@ -113,6 +113,7 @@
   <!-- semantic js -->
   <script src="semantic/dist/semantic.js"></script>
   <script src="js/registrationValidation.js"></script>
+  <script src="js/mobileMenu.js"></script>
 
 </head>
 

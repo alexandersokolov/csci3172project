@@ -29,6 +29,7 @@
   <!-- semantic js -->
   <script src="semantic/dist/semantic.js"></script>
   <script src="js/registrationValidation.js"></script>
+  <script src="js/mobileMenu.js"></script>
 
 </head>
 
@@ -43,6 +44,11 @@
 <!-- main content -->
   <div id="main_content">
     <h1> account home </h1>
+    <?php
+      echo "stuff";
+      echo $_SESSION['username'];
+      echo $_SESSION['password'];
+      ?>
   </div>
 
 <!-- end main content -->

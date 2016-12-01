@@ -7,7 +7,7 @@
   $username = isset($_POST['username']) ? $_POST['username'] : $_SESSION['username'];
   $password = isset($_POST['password']) ? hashPass($_POST['password']) : $_SESSION['password'];
 
-  if(!isset($username)){
+  if(!isset($username) || empty($username)){
     header("Location: login.php");
   }
 
@@ -29,8 +29,12 @@
     if(count($result) > 1){
 
       if($username != $result[0] && !verifyHash($password, $result[1])){
-        header("Location: accessDenied.php");
+        header("Location: login.php");
       }
+
+    }
+    else{
+      header("Location: login.php");
 
     }
 

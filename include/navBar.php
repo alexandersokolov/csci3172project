@@ -26,9 +26,10 @@
                 </a>
             </div>
         </div>
-        <div class="ui vertical navbar menu">
-            <a href="" class="active item">Home</a>
+        <div class="ui vertical navbar menu" style="margin-top: 10%;">
             <div class="ui item">
+               <a href="index.php" class="item" style="padding-left: 0;">Home</a>
+
                 <div class="text">Products</div>
                 <div class="menu">
                     <a class="item">Laptops</a>
