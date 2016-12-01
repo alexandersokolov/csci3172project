@@ -88,3 +88,65 @@
     display: none;
 }
 
+/* Shopping item CSS */
+.cartContainer
+{
+    display: block;
+}
+
+
+.cartItem
+{
+    /* Modify/Remove border later, for testing purposes  */
+    display: block;
+
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 0.28571429rem;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+
+}
+
+.productImage
+{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    float: left;
+    border-radius: 0.28571429rem;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.productTitle
+{
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1.5em;
+    display: block;
+
+}
+
+.productDescription
+{
+    float: left;
+
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.productPrice
+{
+    float: left;
+
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.itemButton
+{
+    float: left;
+    margin-left: 10px !important;
+    margin-top: 8px !important;
+}
