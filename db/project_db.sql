@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 27, 2016 at 01:46 PM
+-- Generation Time: Dec 07, 2016 at 09:30 PM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -13,6 +13,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `csci3172project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `date` date NOT NULL,
+  `text` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -34,6 +47,20 @@ CREATE TABLE `creditCards` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `available` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -44,7 +71,7 @@ CREATE TABLE `users` (
   `firstName` varchar(128) NOT NULL,
   `lastName` varchar(128) NOT NULL,
   `addressOne` varchar(256) NOT NULL,
-  `addressTwo` varchar(256) DEFAULT NULL,
+  `addressTwo` varchar(256) NOT NULL,
   `province` varchar(5) NOT NULL,
   `postCode` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -54,11 +81,24 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`);
+
+--
 -- Indexes for table `creditCards`
 --
 ALTER TABLE `creditCards`
   ADD PRIMARY KEY (`number`),
   ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -67,8 +107,23 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `creditCards`
