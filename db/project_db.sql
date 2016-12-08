@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 07, 2016 at 09:30 PM
+-- Generation Time: Dec 08, 2016 at 09:57 PM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -24,7 +24,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `username` varchar(128) NOT NULL,
   `date` date NOT NULL,
-  `text` varchar(512) NOT NULL
+  `text` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -53,6 +53,8 @@ CREATE TABLE `creditCards` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `imagePath` varchar(512) NOT NULL,
+  `description` text NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `quantity` int(11) NOT NULL,
   `available` tinyint(1) NOT NULL
