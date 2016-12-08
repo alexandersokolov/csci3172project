@@ -93,6 +93,5 @@ $(document).ready(function(){
 //called after successful submission of the form
 function validateForm(){
 
-  alert("Registration Successful");
   return true;
 }

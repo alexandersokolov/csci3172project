@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     //Accepts json data
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
@@ -36,14 +36,18 @@
     //Creates a JSON array based on if the passwords match or not
     if($logBool==true)
     {
+        $_SESSION['username'] = $email;
+        $_SESSION['password'] = $password;
         $arr = array('answer'=>'true');
+
     }
     if($logBool!=true)
     {
         $arr = array('answer'=>'false');
-    }
 
+    }
     echo json_encode($arr);
+
 
 
 ?>
