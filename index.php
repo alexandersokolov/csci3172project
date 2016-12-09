@@ -28,7 +28,6 @@
 
 
 
-
 <!-- START OF NAVBAR MENU -->
 
 <?php include "include/navBar.php"; ?>
@@ -63,41 +62,12 @@
 <!-- Super Simple Slider -->
 <script src="sss/sss.js"></script>
 
-<!-- jQuery that allows semantic ui javascript -->
-<script>
-    $(document).ready(function(){
-        $('.right.menu.open').on("click",function(e){
-            e.preventDefault();
-            $('.ui.vertical.menu').toggle();
-        });
-
-        $('.ui.dropdown').dropdown();
-    });
-</script>
-<!-- jQuery that enables semantic UI login modal -->
-<script>
-    //Function that makes the login modal show-up
-    $(".login").click(function()
-    {
-        $('.ui.modal.login')
-            .modal('show')
-        ;
-    });
-</script>
-
-<!-- enables shopping cart modal -->
-<script>
-    //Function that makes the login modal show-up
-    $(".cart").click(function()
-    {
-        $('.ui.modal.cart')
-            .modal('show')
-        ;
-    });
-</script>
+<!-- Semantic UI Javascript -->
+<script src="js/semanticFuncionality.js"></script>
 
 
 <!-- Super Simple Slider -->
+
 <script>
     $(document).ready(function(){
         $('.slider').sss({

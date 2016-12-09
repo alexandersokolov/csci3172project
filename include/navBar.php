@@ -16,6 +16,8 @@
                 </div>
             </a>
             <div class="right menu">
+                <a href="#" class="item login" onclick="onClickLogin()"><i class="sign in icon"></i>Login</a>
+                <a href="#" class="item cart" onclick="onClickCart()"><i class="shopping basket icon"></i>Cart</a>
                 <?php if(isset($_SESSION['username'])){  ?>
 
                   <a href="account.php" class="item"><i class="sign in icon"></i>Account</a>
@@ -57,8 +59,8 @@
                 </div>
             </div>
             <div class="menu">
-                <a href="#" class="item login">Login</a>
-                <a href="#" class="item cart">Cart</a>
+                <a href="#" class="item login" onclick="onClickLogin()">Login</a>
+                <a href="#" class="item cart" onclick="onClickCart()">Cart</a>
             </div>
 
 
