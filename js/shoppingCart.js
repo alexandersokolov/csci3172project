@@ -13,28 +13,6 @@ function addToCart(id){
   //Sending http request to the php file for validation
   var request = new XMLHttpRequest();
 
-  request.onreadystatechange = processRequest;
-  function processRequest(e)
-  {
-      if (request.readyState == 4 && request.status == 200)
-      {
-
-        var response = JSON.parse(request.responseText);
-
-        if(response.length > 0){
-          var html = "";
-          for(var i = 0; i < response.length; i++){
-
-            console.log(response[i]);
-          }
-
-
-        }
-
-
-      }
-  }
-
   request.open("POST", "include/addToCart.php", true);
   request.setRequestHeader("Content-type", "application/json");
 
@@ -84,6 +62,7 @@ function updateCart(){
 function convertToCartHtml(name, description, imagePath, price, quantity){
 
   console.log(name + ", " + description + ", " + imagePath + ", " + price + ", " + quantity);
+
   var html = '<div class="cartContainer">' +
       '<div class="cartItem">' +
        '<div class="productImage">' +
