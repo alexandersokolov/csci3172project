@@ -4,7 +4,7 @@
   include 'include/dbConnect.php';
   //include_once 'include/utilities.php';
 
-  $username = 'jason';
+  $username = $_SESSION['username'];
 
   $sqlStatement = 'SELECT * FROM users WHERE username = :username';
 
