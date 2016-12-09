@@ -8,13 +8,15 @@
   header("Content-Type: application/json; charset=UTF-8");
 
   $data = file_get_contents("php://input");
+  $data = json_decode($data, true);
 
-  if($data == "update"){
+  if($data['op'] == "update"){
     updateCart();
   }
-  else{
-
-    $data = json_decode($data, true);
+  else if($data['op'] == "remove"){
+    removeItem($data['id']);
+  }
+  else if($data['op'] == "add"){
 
     $id = $data['id'];
 
@@ -71,6 +73,17 @@
 
   }
 
+  function removeItem($id){
+
+    if(isset($_SESSION['cart'][$id])){
+      $_SESSION['cart'][$id]['quantity']--;
+
+      if($_SESSION['cart'][$id]['quantity'] <= 0){
+        unset($_SESSION['cart'][$id]);
+      }
+    }
+
+  }
 
 
  ?>

@@ -5,6 +5,7 @@ function test(){
 function addToCart(id){
 
   var obj = new Object();
+  obj.op = "add";
   obj.id = id;
 
   var jsonObj = JSON.stringify(obj);
@@ -13,17 +14,33 @@ function addToCart(id){
   //Sending http request to the php file for validation
   var request = new XMLHttpRequest();
 
-  request.open("POST", "include/addToCart.php", true);
+    request.onreadystatechange = processRequest;
+    function processRequest(e)
+    {
+        if (request.readyState == 4 && request.status == 200)
+        {
+
+          updateCart();
+        }
+    }
+
+
+  request.open("POST", "include/updateCart.php", true);
   request.setRequestHeader("Content-type", "application/json");
 
   request.send(jsonObj);
 
-  updateCart();
 }
 
 
 //
 function updateCart(){
+  var obj = new Object();
+  obj.op = "update";
+
+  var jsonObj = JSON.stringify(obj);
+
+
   //Sending http request to the php file for validation
   var request = new XMLHttpRequest();
 
@@ -32,34 +49,41 @@ function updateCart(){
   {
       if (request.readyState == 4 && request.status == 200)
       {
-
+        console.log(request.responseText);
         var response = JSON.parse(request.responseText);
+
         console.log(response);
+
+        var html = "";
+
         if(response.length > 0){
-          var html = "";
+
           for(var i = 0; i < response.length; i++){
             console.log(response[i]);
 
-             html += convertToCartHtml(response[i].name, response[i].description, response[i].imagePath, response[i].price, response[i].quantity);
+             html += convertToCartHtml(response[i].id, response[i].name, response[i].description, response[i].imagePath, response[i].price, response[i].quantity);
 
           }
-
-          document.getElementById('main_cart_content').innerHTML = html;
-
-
+          html += '<div class="ui fluid large teal submit button">Checkout</div>';
         }
+        else{
+          html = '<p>No items in your cart<p> <br> <div class="ui fluid large teal submit button">Checkout</div>';
+        }
+
+        document.getElementById('main_cart_content').innerHTML = html;
+
 
 
       }
   }
 
-  request.open("POST", "include/addToCart.php", true);
+  request.open("POST", "include/updateCart.php", true);
   request.setRequestHeader("Content-type", "application/json");
 
-  request.send("update");
+  request.send(jsonObj);
 }
 
-function convertToCartHtml(name, description, imagePath, price, quantity){
+function convertToCartHtml(id, name, description, imagePath, price, quantity){
 
   console.log(name + ", " + description + ", " + imagePath + ", " + price + ", " + quantity);
 
@@ -83,9 +107,35 @@ function convertToCartHtml(name, description, imagePath, price, quantity){
           '<div class="productPrice">' +
               '<p><b>Quantity:</b>' +  quantity + '</p>' +
           '</div>' +
-          '<button class="negative ui button itemButton">Remove</button>' +
+          '<button class="ui button itemButton" onclick="removeItem(' + id + ');">Remove</button>' +
     '</div>' +
   '</div>';
 
   return html;
+}
+
+function removeItem(id){
+  var obj = new Object();
+  obj.op = "remove";
+  obj.id = id;
+
+  var jsonObj = JSON.stringify(obj);
+
+  //Sending http request to the php file for validation
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = processRequest;
+  function processRequest(e)
+  {
+      if (request.readyState == 4 && request.status == 200)
+      {
+
+        updateCart();
+      }
+  }
+
+  request.open("POST", "include/updateCart.php", true);
+  request.setRequestHeader("Content-type", "application/json");
+
+  request.send(jsonObj);
 }
