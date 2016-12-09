@@ -10,14 +10,13 @@
             <a class="ui dropdown item"><i class="shopping bag icon"></i>Products
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <div class="item">Laptops</div>
-                    <div class="item">Televisions</div>
-                    <div class="item">Mobile Phones</div>
+                    <div class="item">Laptop</div>
+                  <!--  <div class="item">Televisions</div>
+                    <div class="item">Mobile Phones</div>-->
                 </div>
             </a>
             <div class="right menu">
-                <a href="#" class="item login" onclick="onClickLogin()"><i class="sign in icon"></i>Login</a>
-                <a href="#" class="item cart" onclick="onClickCart()"><i class="shopping basket icon"></i>Cart</a>
+
                 <?php if(isset($_SESSION['username'])){  ?>
 
                   <a href="account.php" class="item"><i class="sign in icon"></i>Account</a>
@@ -25,10 +24,10 @@
                 }
                 else{
                 ?>
-                  <a href="#" class="item login"><i class="sign in icon"></i>Login</a>
+                  <a href="#" class="item login" onclick="onClickLogin()"><i class="sign in icon"></i>Login</a>
 
                 <?php } ?>
-                 <a href="#" class="item cart"><i class="shopping basket icon"></i>Cart</a>
+                 <a href="#" class="item cart" onclick="onClickCart()"><i class="shopping basket icon"></i>Cart</a>
 
                  <?php if(isset($_SESSION['username'])){ ?>
                    <a href="logout.php" class="item"><i class="sign in icon"></i>Log out</a>

@@ -23,14 +23,11 @@ function onClickCart()
     $('.ui.modal.cart').modal({closeable:true})
         .modal('show')
     ;
+
+    updateCart();
 }
 
-//Adds product to cart
-function onClickAddCart()
-{
-    //Insert code that will add product to the cart
-    alert("Added item");
-}
+
 
 //Submitting review functionality
 function submitReview(username,rating,text)
@@ -40,10 +37,3 @@ function submitReview(username,rating,text)
 
     alert(text);
 }
-
-
-
-
-
-
-
