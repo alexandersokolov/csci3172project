@@ -1,0 +1,82 @@
+.productView
+{
+    font-size: 2em;
+  /*  background-color: beige; */
+    margin: 5% 5% 5% 5%;
+    height: 50%;
+}
+
+.individualImage
+{
+    width: 8em;
+    height: 8em;
+    border: solid 2px;
+    float: left;
+}
+
+.itemRating
+{
+    float: left;
+
+}
+
+.productBase
+{
+    border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.leaveReview
+{
+    border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.userReviews
+{
+    border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+
+.itemName
+{
+    display: inline-block;
+    width: 100%;
+
+}
+
+.itemDescription
+{
+    font-size: 0.5em;
+}
+
+.priceDiv
+{
+    font-size: 0.8em;
+}
+
+.addCart
+{
+    display: inline-block;
+    width: 10em;
+    float: left;
+    margin-top: 5% !important;
+
+
+}
+
+.reviewTitle
+{
+    text-align: center;
+}
+
+.submitReview
+{
+    text-align: center !important;
+}
+
+.userTitle
+{
+    float: left;
+    font-size: 0.6em;
+    margin-bottom: 1%;
+}
+

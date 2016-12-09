@@ -12,8 +12,8 @@
                 </div>
             </a>
             <div class="right menu">
-                <a href="#" class="item login"><i class="sign in icon"></i>Login</a>
-                <a href="#" class="item cart"><i class="shopping basket icon"></i>Cart</a>
+                <a href="#" class="item login" onclick="onClickLogin()"><i class="sign in icon"></i>Login</a>
+                <a href="#" class="item cart" onclick="onClickCart()"><i class="shopping basket icon"></i>Cart</a>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
                 </div>
             </div>
             <div class="menu">
-                <a href="#" class="item login">Login</a>
-                <a href="#" class="item cart">Cart</a>
+                <a href="#" class="item login" onclick="onClickLogin()">Login</a>
+                <a href="#" class="item cart" onclick="onClickCart()">Cart</a>
             </div>
 
 
