@@ -48,7 +48,6 @@
             request.open("POST", "include/loginValidate.php", true);
             request.setRequestHeader("Content-type", "application/json");
 
-            //Testing new way of doing stuff
             request.send(jsonString);
 
             request.onreadystatechange = processRequest;

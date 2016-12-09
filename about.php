@@ -98,7 +98,7 @@
 
 <!-- Shopping Cart Modal -->
 <?php
-    include "include/shoppingModal.html"
+    include "include/shoppingModal.php"
 ?>
 
 

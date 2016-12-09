@@ -20,9 +20,6 @@
                      <p>Username or password is incorrect</p>
                  </div>
 
-
-
-
                  <div class="field" id="emailField">
                      <div class="ui left icon input">
                          <i class="user icon"></i>

@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+
+
+ ?>
+
+
 <html lang="en">
 <head>
 
@@ -24,6 +32,8 @@
     <!-- Stylesheet Link -->
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
+    <script src="js/populateShop.js"></script>
+
 </head>
 <body>
 
@@ -47,7 +57,7 @@
 
 <!-- Shopping Cart Modal -->
 <?php
-    include "include/shoppingModal.html"
+    include "include/shoppingModal.php"
 ?>
 
 <!-- Footer -->
@@ -107,6 +117,7 @@
     });
 </script>
 
+
 <div class = "category-container">
     <div class="category-list">
         <h2>Category</h2>
@@ -120,7 +131,7 @@
     </div>
 </div>
 
-<div class = "content-container">
+<div class = "content-container" >
 
     <img class="ui top aligned small image" src="media/laptop/laptop1.png">
     <a><h3>Acer Aspire</h3> <p>15.6" HD 1366 x 768 pixel resolution <br> 4GB DDR3L SDRAM <br> 500GB HDD, 2-in-1 card reader</p>
