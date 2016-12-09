@@ -8,34 +8,66 @@
   header("Content-Type: application/json; charset=UTF-8");
 
   $data = file_get_contents("php://input");
-  $data = json_decode($data, true);
 
-  $id = $data['id'];
-
-  if(isset($_SESSION['cart'][$id])){
-
-    $_SESSION['cart'][$id]['quantity']++;
+  if($data == "update"){
+    updateCart();
   }
   else{
 
-    $sql = 'SELECT * FROM products WHERE id = :id';
+    $data = json_decode($data, true);
 
-    $id = mysql_fix_string($id);
+    $id = $data['id'];
 
-    $s = $GLOBALS['pdo']->prepare($sqlStatement);
-    $s->bindValue(':id', $id, PDO::PARAM_INT);
-    $s->execute();
+    if(isset($_SESSION['cart'][$id])){
+      $_SESSION['cart'][$id]['quantity']++;
 
-    $result = $s->fetch();
 
-    echo $result['name'];
+    }
+    else{
+      $sql = 'SELECT * FROM products WHERE id = :id';
+      //
+      $id = mysql_fix_string($id);
+      //
+      try{
+        $s = $GLOBALS['pdo']->prepare($sql);
+        $s->bindValue(':id', $id, PDO::PARAM_INT);
+        $s->execute();
+        //
+        $result = $s->fetch();
 
-    /*$_SESSION['cart'][$result['id']] = array(
+        $_SESSION['cart'][$result['id']] = array(
+          'id' => $result['id'],
+          'name' => $result['name'],
+          'imagePath' => $result['imagePath'],
+          'description' => $result['description'],
+          'price' => $result['price'],
+          'quantity' => 1
+        );
 
-      'name' => $result['name'],
-      'price' => $result['price'],
-      'quantity' => $result['quantity']
-    );*/
+      }
+      catch(PDOException $e){
+        echo "pdo error";
+      }    //
+
+    }
+
+    updateCart();
+  }
+
+
+  function updateCart(){
+
+    $jsonArray = array();
+    $count = 0;
+
+
+    foreach($_SESSION['cart'] as $id){
+
+      $data = array('id'=>$id['id'], 'name'=>$id['name'], 'imagePath'=>$id['imagePath'], 'description'=>$id['description'], 'price'=>$id['price'], 'quantity'=> $id['quantity'] );
+      $jsonArray[$count++] = $data;
+    }
+
+    echo json_encode($jsonArray);
 
   }
 

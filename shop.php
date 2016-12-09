@@ -56,7 +56,7 @@
 
   <!-- Shopping Cart Modal -->
   <?php
-      include "include/shoppingModal.php"
+      include "include/shoppingModal.html"
   ?>
 
   <div class = "category-container" style="margin-top: 5%;">
