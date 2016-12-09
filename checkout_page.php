@@ -10,18 +10,18 @@
     <link rel="stylesheet" type="text/css" href="sss/sss.css">
     <!-- Stylesheet Link -->
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-<<<<<<< HEAD
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
   </head>
 
   <body>
 
-=======
+
   </head>
 
   <body>
->>>>>>> origin/master
+
     <div class="ui grid">
         <div class="computer tablet only row">
             <div class="ui inverted fixed menu navbar page grid">
@@ -110,7 +110,7 @@
     <div class="ui inverted segment">
       <h4 class="ui left floated header">Place Order</h4>
     </div> -->
-<<<<<<< HEAD
+
 <div class="ui grid">
 <div class = "content-container">
 <form class="ui form">
@@ -212,8 +212,7 @@
 </form>
 
 
-=======
->>>>>>> origin/master
+
 
         <div class="ui center aligned segment">
           <h4 class="ui left floated header">Deliver To</h4>
@@ -258,12 +257,10 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
+
   </div>
 </div>
-=======
 
->>>>>>> origin/master
 
   </body>
 
