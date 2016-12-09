@@ -102,13 +102,13 @@ include "include/shoppingModal.html"
 
                 <div class="field">
                     <label>Description</label>
-                    <textarea rows="2" id="reviewText"></textarea>
+                    <textarea rows="2" id="inputText"></textarea>
                 </div>
 
                 <div class="field">
 
 
-                    <button class="ui green button submitReview" onclick="submitReview(username,rating,text)">Submit</button>
+                    <button class="ui green button submitReview" onclick="submitReview(username,rating,productId)">Submit</button>
                 </div>
 
 
@@ -120,10 +120,11 @@ include "include/shoppingModal.html"
 
     <!-- Javascript that gets all of the information needed for a review -->
     <script>
-        //Username needs to be replaced later
+        //Username and id needs to be replaced later with real session variable
         var username = "<?php echo "tempUser"; ?>";
+        var productId = "<?php echo "1"; ?>";
         var rating;
-        var text = document.getElementById('reviewText').value;
+
     </script>
 
 
@@ -156,6 +157,7 @@ include "include/shoppingModal.html"
         $('.ui.rating.review')
             .rating('disable')
         ;
+
 
     </script>
 

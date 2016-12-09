@@ -109,7 +109,6 @@
 {
     /* Modify/Remove border later, for testing purposes  */
     display: block;
-
     overflow: hidden;
     margin-bottom: 10px;
     border-radius: 0.28571429rem;
