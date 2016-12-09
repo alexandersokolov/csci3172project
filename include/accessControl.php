@@ -5,8 +5,15 @@
   session_start();
 
 
-  $username = isset($_POST['username']) ? $_POST['username'] : $_SESSION['username'];
-  $password = isset($_POST['password']) ? hashPass($_POST['password']) : $_SESSION['password'];
+ $username = isset($_POST['username']) ? $_POST['username'] : $_SESSION['username'];
+ $password = isset($_POST['password']) ? hashPass($_POST['password']) : $_SESSION['password'];
+
+  // $username = $_SESSION['username'];
+  // $password = $_SESSION['password'];
+
+  // echo "printing..." . "<br>";
+  // echo $username . "<br>";
+  // echo $password . "<br>";
 
   if(!isset($username) || empty($username)){
     header("Location: login.php");
@@ -32,6 +39,7 @@
       if($username != $result[0] && !verifyHash($password, $result[1])){
         header("Location: login.php");
       }
+
 
     }
     else{

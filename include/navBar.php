@@ -1,3 +1,7 @@
+<?php
+  session_start();
+ ?>
+
 <div class="ui grid">
     <div class="computer tablet only row">
         <div class="ui inverted fixed menu navbar page grid">
@@ -14,6 +18,23 @@
             <div class="right menu">
                 <a href="#" class="item login" onclick="onClickLogin()"><i class="sign in icon"></i>Login</a>
                 <a href="#" class="item cart" onclick="onClickCart()"><i class="shopping basket icon"></i>Cart</a>
+                <?php if(isset($_SESSION['username'])){  ?>
+
+                  <a href="account.php" class="item"><i class="sign in icon"></i>Account</a>
+                <?php
+                }
+                else{
+                ?>
+                  <a href="#" class="item login"><i class="sign in icon"></i>Login</a>
+
+                <?php } ?>
+                 <a href="#" class="item cart"><i class="shopping basket icon"></i>Cart</a>
+
+                 <?php if(isset($_SESSION['username'])){ ?>
+                   <a href="logout.php" class="item"><i class="sign in icon"></i>Log out</a>
+
+                 <?php } ?>
+
             </div>
         </div>
     </div>
