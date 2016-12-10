@@ -1,8 +1,86 @@
+<?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    require 'include/dbConnect.php';
+    require 'include/utilities.php';
+
+    $username = "";
+    $firstName = "";
+    $lastName = "";
+    $type="";
+    $expMonth="";
+    $expYear="";
+    $csv="";
+  
+
+
+    //Prepared sql statement for inserting new users into the database
+    $sqlStatement = 'INSERT INTO creditcards (number, username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
+      :NULL,
+      :NULL,
+      :firstName,
+      :lastName,
+      :type,
+      :expMonth,
+      :expYear,
+      :csv);';
+
+    if(!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
+
+    
+        // $username = mysql_fix_string($_POST['username']);
+        $firstName = mysql_fix_string($_POST['firstName']);
+        $lastName = mysql_fix_string($_POST['lastName']);
+        $type = mysql_fix_string($_POST['type']);
+        $expMonth = mysql_fix_string($_POST['expMonth']);
+        $expYear = mysql_fix_string($_POST['expYear']);
+        $csv = mysql_fix_string($_POST['csv']);
+      try{
+
+          //begin preparing and binding the sql statement
+        $s = $GLOBALS['pdo']->prepare($sqlStatement);
+        // $s->bindValue(':username', $username, PDO::PARAM_STR);
+        $s->bindValue(':firstName', $firstName, PDO::PARAM_STR);
+        $s->bindValue(':lastName', $lastName, PDO::PARAM_STR);
+        $s->bindValue(':type', $type, PDO::PARAM_STR);
+        $s->bindValue(':expMonth', $expMonth, PDO::PARAM_STR);
+        $s->bindValue(':expYear', $expYear, PDO::PARAM_STR);
+        $s->bindValue(':csv', $csv, PDO::PARAM_STR);
+
+
+        //execute the sql statement
+        $s->execute();
+        $s = null;
+
+        //close the db connection
+        closeDbConnection();
+
+        //navigate to registration success page
+        header('Location: index.php');
+        echo "$name";
+
+      }    
+        catch(PDOException $e){
+        closeDbConnection();
+        echo "Error - Could not store your information, please try again!";
+
+        }
+      }
+      }
+      else{
+        echo "continue";
+        echo "it worked ";
+      }
+    
+    
+
+?>
+
 
 <html>
 
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Semantic UI CSS -->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
@@ -113,16 +191,17 @@
 
 <div class="ui grid">
 <div class = "content-container">
-<form class="ui form">
+<form class="ui form" method="post" action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>">
   <h4 class="ui dividing header">Shipping Information</h4>
   <div class="field">
     <label>Name</label>
     <div class="two fields">
       <div class="field">
-        <input type="text" name="shipping[first-name]" placeholder="First Name">
+        <input type="text" name="firstName" placeholder="First Name" >
+
       </div>
       <div class="field">
-        <input type="text" name="shipping[last-name]" placeholder="Last Name">
+        <input type="text" name="lastName" placeholder="Last Name" >
       </div>
     </div>
   </div>
@@ -167,9 +246,9 @@
     <label>Card Type</label>
     <select class="ui fluid dropdown">
         <option value="">Card Type</option>
-    <option value="M">Mastercard</option>
-    <option value="V">Visa</option>
-    <option value="P">Paypal</option>
+    <option value="Mastercard" name="type">Mastercard</option>
+    <option value="Visa" name="type">Visa</option>
+    <option value="Paypal" name="type">Paypal</option>
       </select>
   </div>
   <div class="fields">
@@ -179,13 +258,13 @@
     </div>
     <div class="three wide field">
       <label>CVC</label>
-      <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+      <input type="text" name="csv" maxlength="3" placeholder="CVC">
     </div>
     <div class="six wide field">
       <label>Expiration</label>
       <div class="two fields">
         <div class="field">
-          <select class="ui fluid search dropdown" name="card[expire-month]">
+          <select class="ui fluid search dropdown" name="expMonth">
             <option value="">Month</option>
             <option value="1">January</option>
             <option value="2">February</option>
@@ -202,31 +281,14 @@
           </select>
         </div>
         <div class="field">
-          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+          <input type="text" name="expYear" maxlength="4" placeholder="Year">
         </div>
       </div>
     </div>
   </div>
  <div class="ui clearing divider"></div>
-  <div class="ui button" tabindex="0">Submit Order</div>
-</form>
-
-
-
-
-        <div class="ui center aligned segment">
-          <h4 class="ui left floated header">Deliver To</h4>
-          <div class="ui clearing divider"></div>
-          <p>Firstname Lastname</p>
-          <p>1111 00 Streetname st</p>
-          <p>City, Province, X1X2Y2, Country</p>
-          <div class="right floated content">
-            <div class="ui button">Edit</div>
-          </div>
-          <div class="ui hidden divider"></div>
-          <div class="ui hidden divider"></div>
-          <h4 class="ui left floated header">Shipping Priority</h4>
-          <div class="ui clearing divider"></div>
+  <div class="ui left aligned segment">
+          
 
           <div class="ui form">
             <div class="grouped fields">
@@ -251,15 +313,26 @@
             </div>
           </div>
         </div>
-        <div class="ui center aligned segment">
-          <h3 class="ui left floated header">Continue to payment</h3>
-          <div class="ui hidden divider"></div>
-        </div>
+        <!-- <div class="ui form success">
+          <div class="ui success message">
+          <div class="header">Form Completed</div>
+            <p>You're all signed up for the newsletter.</p>
+          </div> -->
+          <div class="ui button submit" type="submit" name="checkout" value="checkout">
+          <div>Submit Order</div>
+
+          </div>
+</form>
+
+
+
+
+       
+        <!-- </div> -->
       </div>
     </div>
 
-  </div>
-</div>
+
 
 
   </body>
