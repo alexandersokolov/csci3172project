@@ -90,10 +90,3 @@ function submitReview(username,rating,productId)
     //Refresh the page
     location.reload();
 }
-
-
-
-
-
-
-

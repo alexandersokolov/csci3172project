@@ -10,9 +10,18 @@
     <link rel="stylesheet" type="text/css" href="sss/sss.css">
     <!-- Stylesheet Link -->
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
   </head>
 
   <body>
+
+
+  </head>
+
+  <body>
+
     <div class="ui grid">
         <div class="computer tablet only row">
             <div class="ui inverted fixed menu navbar page grid">
@@ -102,6 +111,109 @@
       <h4 class="ui left floated header">Place Order</h4>
     </div> -->
 
+<div class="ui grid">
+<div class = "content-container">
+<form class="ui form">
+  <h4 class="ui dividing header">Shipping Information</h4>
+  <div class="field">
+    <label>Name</label>
+    <div class="two fields">
+      <div class="field">
+        <input type="text" name="shipping[first-name]" placeholder="First Name">
+      </div>
+      <div class="field">
+        <input type="text" name="shipping[last-name]" placeholder="Last Name">
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Billing Address</label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <input type="text" name="shipping[address]" placeholder="Street Address">
+      </div>
+      <div class="four wide field">
+        <input type="text" name="shipping[address-2]" placeholder="Apt #">
+      </div>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>State</label>
+      <select class="ui fluid dropdown">
+        <option value="">State</option>
+    <option value="ON">Ontario</option>
+    <option value="QC">Quebec</option>
+    <option value="NS">Nova Scotia</option>
+    <option value="NB">New Brunswick</option>
+    <option value="MB">Manitoba</option>
+    <option value="BC">British Columbia</option>
+    <option value="PE">Prince Edward Island</option>
+    <option value="SK">Saskatchewan</option>
+    <option value="AB">Alberta</option>
+    <option value="NL">Newfoundland and Labrador</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Country</label>
+      <select class="ui fluid dropdown">
+        <option value="">Country</option>
+    <option value="CA">Canada</option>
+      </select>
+    </div>
+  </div>
+  <h4 class="ui dividing header">Billing Information</h4>
+  <div class="field">
+    <label>Card Type</label>
+    <select class="ui fluid dropdown">
+        <option value="">Card Type</option>
+    <option value="M">Mastercard</option>
+    <option value="V">Visa</option>
+    <option value="P">Paypal</option>
+      </select>
+  </div>
+  <div class="fields">
+    <div class="seven wide field">
+      <label>Card Number</label>
+      <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+    </div>
+    <div class="three wide field">
+      <label>CVC</label>
+      <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+    </div>
+    <div class="six wide field">
+      <label>Expiration</label>
+      <div class="two fields">
+        <div class="field">
+          <select class="ui fluid search dropdown" name="card[expire-month]">
+            <option value="">Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="field">
+          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="ui clearing divider"></div>
+  <div class="ui button" tabindex="0">Submit Order</div>
+</form>
+
+
+
+
         <div class="ui center aligned segment">
           <h4 class="ui left floated header">Deliver To</h4>
           <div class="ui clearing divider"></div>
@@ -145,6 +257,9 @@
         </div>
       </div>
     </div>
+
+  </div>
+</div>
 
 
   </body>
