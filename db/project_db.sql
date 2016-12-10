@@ -2,19 +2,13 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 09, 2016 at 04:56 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: localhost:8889
+-- Generation Time: Dec 10, 2016 at 01:33 AM
+-- Server version: 5.6.28
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `csci3172project`
@@ -34,21 +28,13 @@ CREATE TABLE `comments` (
   `rating` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `username`, `date`, `text`, `rating`) VALUES
-(1, 'testCommentUser', '2016-12-08', 'This product is greaaaaat', 5),
-(2, 'testCommentUser', '2016-12-07', 'This product was baaad', 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `creditcards`
+-- Table structure for table `creditCards`
 --
 
-CREATE TABLE `creditcards` (
+CREATE TABLE `creditCards` (
   `number` varchar(64) NOT NULL,
   `username` varchar(128) NOT NULL,
   `firstName` varchar(128) NOT NULL,
@@ -58,6 +44,33 @@ CREATE TABLE `creditcards` (
   `expYear` varchar(3) NOT NULL,
   `csv` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `imagePath` varchar(512) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `available` tinyint(1) NOT NULL,
+  `type` int(11) NOT NULL,
+  `subtype` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `imagePath`, `description`, `price`, `quantity`, `available`, `type`, `subtype`) VALUES
+(1, 'test laptop', '/test/path', 'this is just a test product', '100', 10, 1, 0, 5),
+(2, 'testtop', '/test/path', 'this is a test laptop', '100', 10, 1, 0, 5),
+(3, 'testtop2', '/test/path2', 'this is a test laptop2', '1001', 101, 1, 0, 5);
 
 -- --------------------------------------------------------
 
@@ -72,29 +85,34 @@ CREATE TABLE `users` (
   `firstName` varchar(128) NOT NULL,
   `lastName` varchar(128) NOT NULL,
   `addressOne` varchar(256) NOT NULL,
-  `addressTwo` varchar(256) DEFAULT NULL,
+  `addressTwo` varchar(256) NOT NULL,
   `province` varchar(5) NOT NULL,
   `postCode` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`username`, `password`, `email`, `firstName`, `lastName`, `addressOne`, `addressTwo`, `province`, `postCode`) VALUES
-('Alexander', '$2y$10$TLfqsWruN2CzEFNK7xHyBeMjdX/5h54bwds9qfHfdICEQtxgMH3ku', 'alexander.sokolov@dal.ca', 'Alexander', 'Sokolov', '123 FakeStreet', '', 'NS', 'B3P 0K9'),
-('bob', '$2y$10$Zf.NwTDGI/omX7UuhAtxGeSzz0.JrbFGcYvrYwdlApmiUbc7wba3i', 'bob@bob.com', 'bob', 'bob', '111 asaa', '111', 'NS', 'B3P0E2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `creditcards`
+-- Indexes for table `comments`
 --
-ALTER TABLE `creditcards`
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `creditCards`
+--
+ALTER TABLE `creditCards`
   ADD PRIMARY KEY (`number`),
   ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -103,15 +121,31 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `creditcards`
+-- Constraints for table `comments`
 --
-ALTER TABLE `creditcards`
-  ADD CONSTRAINT `creditcards_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Constraints for table `creditCards`
+--
+ALTER TABLE `creditCards`
+  ADD CONSTRAINT `creditcards_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
