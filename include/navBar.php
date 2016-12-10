@@ -10,9 +10,9 @@
             <a class="ui dropdown item"><i class="shopping bag icon"></i>Products
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <div class="item">Laptops</div>
-                    <div class="item">Televisions</div>
-                    <div class="item">Mobile Phones</div>
+                    <div class="item" onclick='gotoPage("shop.php?id=0");'>Laptops</div>
+                    <div class="item" onclick='gotoPage("shop.php?id=1");'>Televisions</div>
+                    <div class="item" onclick='gotoPage("shop.php?id=2");'>Mobile Phones</div>
                 </div>
             </a>
             <div class="right menu">

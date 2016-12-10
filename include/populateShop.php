@@ -10,23 +10,15 @@
   $data = file_get_contents("php://input");
   $data = json_decode($data, true);
 
-  $laptopType = 0;
-  $ultrabookSubtype = 0;
-  $chromebookSubtype = 1;
-  $gamingLaptopSubtype = 2;
-  $convLaptopSubtype = 3;
-  $netbookSubtype = 4;
-  $homeLaptop = 5;
-  $businessLaptop = 6;
 
-  $sqlStatement = "";
+  $type = mysql_fix_string($data['type']);
 
-  if($data['type'] = 'all'){
-    $sqlStatement = 'SELECT * FROM products WHERE type = 0';
-  }
 
-  if(!empty($sqlStatement)){
+  $sqlStatement = 'SELECT * FROM products WHERE type = :type';
+
+  try{
     $s = $GLOBALS['pdo']->prepare($sqlStatement);
+    $s->bindValue(':type', $type, PDO::PARAM_INT);
     $s->execute();
 
     //$results = $s->fetch();
@@ -45,10 +37,10 @@
 
     echo json_encode($jsonArray);
   }
-  else{
-
+  catch(PDOException $e){
     echo "";
   }
+
 
 
  ?>

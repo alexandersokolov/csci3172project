@@ -90,3 +90,7 @@ function submitReview(username,rating,productId)
     //Refresh the page
     location.reload();
 }
+
+function gotoPage(page){
+  window.location.replace(page);
+}

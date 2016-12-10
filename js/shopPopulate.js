@@ -1,7 +1,7 @@
-function addAllComputers(){
-
+function addAllProducts(id){
+  console.log("PAGE ID: " + id);
   var type = new Object();
-  type.type = "all";
+  type.type = id;
 
   var jsonString = JSON.stringify(type);
 
@@ -34,7 +34,7 @@ function addAllComputers(){
   request.open("POST", "include/populateShop.php", true);
   request.setRequestHeader("Content-type", "application/json");
 
-  request.send(type);
+  request.send(jsonString);
 }
 
 function convertProductToHtml(id, name, imagePath, desc, price, quantity, available, type){
@@ -49,6 +49,3 @@ function convertProductToHtml(id, name, imagePath, desc, price, quantity, availa
 
   return html;
 }
-
-
-addAllComputers();

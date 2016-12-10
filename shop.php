@@ -1,3 +1,12 @@
+<?php
+
+  $page = 0;
+  if(isset($_GET['id'])){
+    $page = $_GET['id'];
+  }
+
+ ?>
+
 <html>
 <head>
 
@@ -29,16 +38,16 @@
 
 
     <script src="semantic/dist/semantic.min.js"></script>
+    <script src="js/shopPopulate.js"></script>
     <script src="js/shoppingCart.js"></script>
     <script src="js/semanticFuncionality.js"></script>
-    <script src="js/populateShop.js"></script>
 
 
 
 
 
 </head>
-<body>
+<body onload=<?php echo '"addAllProducts(' . $page . ');"' ?>>
 
 
   <!-- START OF NAVBAR MENU -->
@@ -72,7 +81,7 @@
       </div>
   </div>
 
-  <div class = "content-container" id="shop_content" style="margin-top: 5%;">
+  <div class = "content-container" id="shop_content" style="margin-top: 5%; ">
 
   </div>
 
@@ -92,4 +101,5 @@
 
         $('.ui.dropdown').dropdown();
     });
+
 </script>
