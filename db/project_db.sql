@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 10, 2016 at 01:33 AM
+-- Generation Time: Dec 10, 2016 at 09:03 PM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -31,10 +31,10 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `creditCards`
+-- Table structure for table `creditcards`
 --
 
-CREATE TABLE `creditCards` (
+CREATE TABLE `creditcards` (
   `number` varchar(64) NOT NULL,
   `username` varchar(128) NOT NULL,
   `firstName` varchar(128) NOT NULL,
@@ -70,7 +70,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `imagePath`, `description`, `price`, `quantity`, `available`, `type`, `subtype`) VALUES
 (1, 'test laptop', '/test/path', 'this is just a test product', '100', 10, 1, 0, 5),
 (2, 'testtop', '/test/path', 'this is a test laptop', '100', 10, 1, 0, 5),
-(3, 'testtop2', '/test/path2', 'this is a test laptop2', '1001', 101, 1, 0, 5);
+(3, 'testtop2', '/test/path2', 'this is a test laptop2', '1001', 101, 1, 0, 5),
+(4, 'phone1', 'media/phone/phone.jpg', 'im a phone', '100', 10, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -91,6 +92,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `password`, `email`, `firstName`, `lastName`, `addressOne`, `addressTwo`, `province`, `postCode`) VALUES
+('testUser1', '$2y$10$Chg4lcXuVPvyTN89NBV97e4nGTLWrxoSA0D8PZKnsYY5EMcSdfd42', 'test@test.com', 'jason', 'test', 'test', 'test', 'NS', 'b3m3m5');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -102,9 +110,9 @@ ALTER TABLE `comments`
   ADD KEY `username` (`username`);
 
 --
--- Indexes for table `creditCards`
+-- Indexes for table `creditcards`
 --
-ALTER TABLE `creditCards`
+ALTER TABLE `creditcards`
   ADD PRIMARY KEY (`number`),
   ADD KEY `username` (`username`);
 
@@ -133,7 +141,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -145,7 +153,7 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
--- Constraints for table `creditCards`
+-- Constraints for table `creditcards`
 --
-ALTER TABLE `creditCards`
+ALTER TABLE `creditcards`
   ADD CONSTRAINT `creditcards_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
