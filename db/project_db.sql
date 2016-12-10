@@ -2,13 +2,19 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 10, 2016 at 09:03 PM
--- Server version: 5.6.28
--- PHP Version: 7.0.10
+-- Host: 127.0.0.1
+-- Generation Time: Dec 10, 2016 at 09:21 PM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `csci3172project`
@@ -21,12 +27,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `username` varchar(128) NOT NULL,
+  `id` int(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `text` text NOT NULL,
   `rating` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `username`, `date`, `text`, `rating`) VALUES
+(1, 'tempUser', '2016-12-10', 'This product is great', 5),
+(1, 'tempUser', '2016-12-10', 'This product is bad', 1);
 
 -- --------------------------------------------------------
 
@@ -68,10 +82,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `imagePath`, `description`, `price`, `quantity`, `available`, `type`, `subtype`) VALUES
-(1, 'test laptop', '/test/path', 'this is just a test product', '100', 10, 1, 0, 5),
-(2, 'testtop', '/test/path', 'this is a test laptop', '100', 10, 1, 0, 5),
-(3, 'testtop2', '/test/path2', 'this is a test laptop2', '1001', 101, 1, 0, 5),
-(4, 'phone1', 'media/phone/phone.jpg', 'im a phone', '100', 10, 1, 1, 0);
+(5, 'Test Product', 'media/productImages/3cTP2zM.png', 'Test Description', '100', 1, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -96,18 +107,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `email`, `firstName`, `lastName`, `addressOne`, `addressTwo`, `province`, `postCode`) VALUES
-('testUser1', '$2y$10$Chg4lcXuVPvyTN89NBV97e4nGTLWrxoSA0D8PZKnsYY5EMcSdfd42', 'test@test.com', 'jason', 'test', 'test', 'test', 'NS', 'b3m3m5');
+('bob', '$2y$10$58vW7u7/f2mGQitQUL2ZFeQ/DmhqqGNzbx4HUojMlwN1GcK/sFdXW', 'bob@bob.com', 'bob', 'bob', '123 bobstreet', '111', 'NS', 'B3P 0E9');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `creditcards`
@@ -133,27 +137,20 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `creditcards`
 --
 ALTER TABLE `creditcards`
   ADD CONSTRAINT `creditcards_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
