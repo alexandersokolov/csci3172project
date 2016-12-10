@@ -85,10 +85,10 @@ include "include/shoppingModal.html"
         </div>
 
         <div class="field">
-            <label for="file" class="ui icon button">
+            <label for="fileToUpload" class="ui icon button">
                 <i class="image icon"></i>
                 Upload Image</label>
-            <input type="file" id="file" name="file" style="display:none">
+            <input type="file" id="fileToUpload" name="fileToUpload" style="display:none">
         </div>
 
         <button class="ui button" type="submit" name="prodSubmit">Add Product</button>
@@ -99,12 +99,16 @@ include "include/shoppingModal.html"
 
 <?php
 
-
     include_once "include/dbConnect.php";
     include_once "include/utilities.php";
 
 
     if(isset($_POST['prodSubmit'])) {
+
+
+        //Adds product to the database
+
+        /*
         $productName = mysql_fix_string($_POST['productName']);
         $price = mysql_fix_string($_POST['price']);
         $category = mysql_fix_string($_POST['category']);
@@ -113,15 +117,19 @@ include "include/shoppingModal.html"
         $query = "INSERT INTO products (category,name,description,price) VALUES (?,?,?,?)";
         $statement = $pdo->prepare($query);
         $statement->execute(array($category, $productName, $description, $price));
+        */
+
 
 
         //File upload
-        $target_dir = "media/productImages";
+        $target_dir = "media/productImages/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
 
+
+
+        // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if ($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
@@ -150,6 +158,38 @@ include "include/shoppingModal.html"
 
 
         }
+
+        echo $target_file;
+
+
+        //Adding the product data to the database
+        $productName = mysql_fix_string($_POST['productName']);
+        $price = mysql_fix_string($_POST['price']);
+        $category = mysql_fix_string($_POST['category']);
+        $description = mysql_fix_string($_POST['description']);
+
+
+        //Setting the type
+        if($category=='television')
+        {
+            $type = 2;
+        }
+
+        if($category=='laptop')
+        {
+            $type = 0;
+        }
+
+        if($category=='mobilePhone')
+        {
+            $type = 1;
+        }
+
+
+        $query = "INSERT INTO products (name,imagePath,description,price,quantity,available,type,subtype) VALUES (?,?,?,?,?,?,?,?)";
+        $statement = $pdo->prepare($query);
+        $statement->execute(array($productName, $target_file, $description, $price, 1,1,$type,1));
+
 
     }
 
