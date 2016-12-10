@@ -3,20 +3,20 @@
     require 'include/dbConnect.php';
     require 'include/utilities.php';
 
-    $username = "";
+
     $firstName = "";
     $lastName = "";
     $type="";
     $expMonth="";
     $expYear="";
     $csv="";
+    $username = $_SESSION['username'];
   
 
 
     //Prepared sql statement for inserting new users into the database
-    $sqlStatement = 'INSERT INTO creditcards (number, username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
-      :NULL,
-      :NULL,
+    $sqlStatement = 'INSERT INTO creditcards ( username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
+      :usename,
       :firstName,
       :lastName,
       :type,
@@ -24,10 +24,11 @@
       :expYear,
       :csv);';
 
-    if(!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
+    if(!empty($_POST['username']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
 
     
         // $username = mysql_fix_string($_POST['username']);
+        $username = mysql_fix_string($_POST['username']);
         $firstName = mysql_fix_string($_POST['firstName']);
         $lastName = mysql_fix_string($_POST['lastName']);
         $type = mysql_fix_string($_POST['type']);
@@ -39,6 +40,7 @@
           //begin preparing and binding the sql statement
         $s = $GLOBALS['pdo']->prepare($sqlStatement);
         // $s->bindValue(':username', $username, PDO::PARAM_STR);
+        $s->bindValue(':username', $username, PDO::PARAM_STR);
         $s->bindValue(':firstName', $firstName, PDO::PARAM_STR);
         $s->bindValue(':lastName', $lastName, PDO::PARAM_STR);
         $s->bindValue(':type', $type, PDO::PARAM_STR);
@@ -68,7 +70,6 @@
       }
       else{
         echo "continue";
-        echo "it worked ";
       }
     
     
