@@ -6,14 +6,18 @@
 
   $username = $_SESSION['username'];
 
-  $sqlStatement = 'SELECT * FROM users WHERE username = :username';
+  $sqlUsername = 'SELECT * FROM users WHERE username = :username';
+
+  $sqlCreditCard = 'SELECT * FROM creditcards WHERE username = :username';
 
   try{
-    $s = $GLOBALS['pdo']->prepare($sqlStatement);
+    $s = $GLOBALS['pdo']->prepare($sqlUsername);
     $s->bindValue(':username', $username, PDO::PARAM_STR);
     $s->execute();
 
     $result = $s->fetch();
+
+    $s = null;
 
     if(count($result) > 1){
       $username = $result['username'];
@@ -28,6 +32,8 @@
 
     }
 
+
+    $s = null;
   }
   catch(PDOException $e){
 
@@ -62,8 +68,8 @@
 
   <!-- semantic js -->
   <script src="semantic/dist/semantic.js"></script>
-  <script src="js/registrationValidation.js"></script>
   <script src="js/mobileMenu.js"></script>
+  <script src="js/updateAccountInfo.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
