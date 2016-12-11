@@ -11,7 +11,7 @@
     $expYear="";
     $csv="";
     $username = $_SESSION['username'];
-  
+
 
 
     //Prepared sql statement for inserting new users into the database
@@ -26,7 +26,7 @@
 
     if(!empty($_POST['username']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
 
-    
+
         // $username = mysql_fix_string($_POST['username']);
         $username = mysql_fix_string($_POST['username']);
         $firstName = mysql_fix_string($_POST['firstName']);
@@ -60,7 +60,7 @@
         header('Location: index.php');
         echo "$name";
 
-      }    
+      }
         catch(PDOException $e){
         closeDbConnection();
         echo "Error - Could not store your information, please try again!";
@@ -71,8 +71,8 @@
       else{
         echo "continue";
       }
-    
-    
+
+
 
 ?>
 
@@ -289,7 +289,7 @@
   </div>
  <div class="ui clearing divider"></div>
   <div class="ui left aligned segment">
-          
+
 
           <div class="ui form">
             <div class="grouped fields">
@@ -328,7 +328,7 @@
 
 
 
-       
+
         <!-- </div> -->
       </div>
     </div>
