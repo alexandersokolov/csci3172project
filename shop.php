@@ -68,18 +68,6 @@
       include "include/shoppingModal.html"
   ?>
 
-  <div class = "category-container" style="margin-top: 5%;">
-      <div class="category-list">
-          <h2>Category</h2>
-          <ul class="category-product">
-              <li><a href="#">Ultrabooks</a></li>
-              <li><a href="#">Chromebooks</a></li>
-              <li><a href="#">Gaming Laptops</a></li>
-              <li><a href="#">Convertible Laptops</a></li>
-              <li><a href="#">Netbooks</a></li>
-          </ul>
-      </div>
-  </div>
 
   <div class = "content-container" id="shop_content" style="margin-top: 5%; ">
 
