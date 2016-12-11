@@ -1,9 +1,12 @@
 <?php
+    ob_start();
+    session_start();
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     require 'include/dbConnect.php';
     require 'include/utilities.php';
+    require 'include/accessControl.php';
 
-
+    $number="";
     $firstName = "";
     $lastName = "";
     $type="";
@@ -15,8 +18,9 @@
 
 
     //Prepared sql statement for inserting new users into the database
-    $sqlStatement = 'INSERT INTO creditcards ( username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
-      :usename,
+    $sqlStatement = 'INSERT INTO creditcards ( number, username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
+      :number,
+      :username,
       :firstName,
       :lastName,
       :type,
@@ -24,10 +28,11 @@
       :expYear,
       :csv);';
 
-    if(!empty($_POST['username']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
+    if(!empty($_POST['number']) &&!empty($_POST['username']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
 
 
         // $username = mysql_fix_string($_POST['username']);
+        $number = mysql_fix_string($_POST['number']);
         $username = mysql_fix_string($_POST['username']);
         $firstName = mysql_fix_string($_POST['firstName']);
         $lastName = mysql_fix_string($_POST['lastName']);
@@ -40,6 +45,7 @@
           //begin preparing and binding the sql statement
         $s = $GLOBALS['pdo']->prepare($sqlStatement);
         // $s->bindValue(':username', $username, PDO::PARAM_STR);
+        $s->bindValue(':number', $number, PDO::PARAM_STR);
         $s->bindValue(':username', $username, PDO::PARAM_STR);
         $s->bindValue(':firstName', $firstName, PDO::PARAM_STR);
         $s->bindValue(':lastName', $lastName, PDO::PARAM_STR);
@@ -72,7 +78,7 @@
         echo "continue";
       }
 
-
+  
 
 ?>
 
@@ -115,7 +121,7 @@
                     </div>
                 </a>
                 <div class="right menu">
-                    <a href="#" class="item login"><i class="sign in icon"></i>Login</a>
+                    <a href="login.php" class="item login"><i class="sign in icon"></i>Login</a>
                     <a href="#" class="item cart"><i class="shopping basket icon"></i>Cart</a>
                 </div>
             </div>
@@ -140,7 +146,7 @@
                     </div>
                 </div>
                 <div class="menu">
-                    <a href="#" class="item login">Login</a>
+                    <a href="login.php" class="item login">Login</a>
                     <a href="#" class="item cart">Cart</a>
                 </div>
             </div>
@@ -255,7 +261,7 @@
   <div class="fields">
     <div class="seven wide field">
       <label>Card Number</label>
-      <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+      <input type="text" name="number" maxlength="16" placeholder="Card #">
     </div>
     <div class="three wide field">
       <label>CVC</label>
@@ -345,3 +351,4 @@
     ?>
   </footer>
 </html>
+<?php ob_end_flush(); ?>
