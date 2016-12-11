@@ -1,11 +1,15 @@
 <?php
-    ob_start();
-    session_start();
-  if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    require 'include/dbConnect.php';
-    require 'include/utilities.php';
-    require 'include/accessControl.php';
-
+     session_start();
+  //
+     require 'include/accessControl.php';
+  //
+  //
+   if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  //
+  //
+     include_once 'include/dbConnect.php';
+     include_once 'include/utilities.php';
+  //
     $number="";
     $firstName = "";
     $lastName = "";
@@ -15,25 +19,25 @@
     $csv="";
     $username = $_SESSION['username'];
 
-
-
+  //
+  //
     //Prepared sql statement for inserting new users into the database
     $sqlStatement = 'INSERT INTO creditcards ( number, username, firstName, lastName, type, expMonth, expYear,csv) VALUES (
-      :number,
-      :username,
-      :firstName,
-      :lastName,
-      :type,
-      :expMonth,
-      :expYear,
-      :csv);';
+       :number,
+       :username,
+       :firstName,
+       :lastName,
+       :type,
+       :expMonth,
+       :expYear,
+       :csv)';
 
-    if(!empty($_POST['number']) &&!empty($_POST['username']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
-
+     if(!empty($_POST['number']) &&!empty($username) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
+     //
 
         // $username = mysql_fix_string($_POST['username']);
         $number = mysql_fix_string($_POST['number']);
-        $username = mysql_fix_string($_POST['username']);
+        $username = mysql_fix_string($username);
         $firstName = mysql_fix_string($_POST['firstName']);
         $lastName = mysql_fix_string($_POST['lastName']);
         $type = mysql_fix_string($_POST['type']);
@@ -64,7 +68,6 @@
 
         //navigate to registration success page
         header('Location: index.php');
-        echo "$name";
 
       }
         catch(PDOException $e){
@@ -72,13 +75,13 @@
         echo "Error - Could not store your information, please try again!";
 
         }
-      }
-      }
-      else{
-        echo "continue";
-      }
+       }
+     }
+     else{
+      echo "continue";
+    }
 
-  
+
 
 ?>
 
@@ -106,6 +109,7 @@
   </head>
 
   <body>
+
 
     <div class="ui grid">
         <div class="computer tablet only row">
@@ -251,11 +255,11 @@
   <h4 class="ui dividing header">Billing Information</h4>
   <div class="field">
     <label>Card Type</label>
-    <select class="ui fluid dropdown">
+    <select class="ui fluid dropdown" name="type">
         <option value="">Card Type</option>
-    <option value="Mastercard" name="type">Mastercard</option>
-    <option value="Visa" name="type">Visa</option>
-    <option value="Paypal" name="type">Paypal</option>
+    <option value="Mastercard" >Mastercard</option>
+    <option value="Visa">Visa</option>
+    <option value="Paypal">Paypal</option>
       </select>
   </div>
   <div class="fields">
@@ -325,8 +329,9 @@
           <div class="header">Form Completed</div>
             <p>You're all signed up for the newsletter.</p>
           </div> -->
-          <div class="ui button submit" type="submit" name="checkout" value="checkout">
-          <div>Submit Order</div>
+          <!-- <div class="ui button submit" type="submit" name="checkout" value="checkout">
+          <div>Submit Order</div> -->
+          <input class="ui button submit" type="submit" name="checkout" value="checkout">
 
           </div>
 </form>
@@ -351,4 +356,3 @@
     ?>
   </footer>
 </html>
-<?php ob_end_flush(); ?>
