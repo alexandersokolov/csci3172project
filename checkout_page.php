@@ -33,7 +33,7 @@
        :csv)';
 
      if(!empty($_POST['number']) &&!empty($username) && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['type']) && !empty($_POST['expMonth']) && !empty($_POST['expYear']) && !empty($_POST['csv'])){
-     //
+
 
         // $username = mysql_fix_string($_POST['username']);
         $number = mysql_fix_string($_POST['number']);
@@ -75,7 +75,12 @@
         echo "Error - Could not store your information, please try again!";
 
         }
-       }
+      }
+      else{
+        header('Location: index.php');
+
+
+      }
      }
      else{
       echo "continue";
