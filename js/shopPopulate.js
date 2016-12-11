@@ -37,15 +37,23 @@ function addAllProducts(id){
   request.send(jsonString);
 }
 
+function goToIndividual(id)
+{
+    window.location.assign("individualProduct.php?id="+id);
+
+}
+
 function convertProductToHtml(id, name, imagePath, desc, price, quantity, available, type){
 
   console.log(name + ", " + imagePath + ", " + desc + ", " + price + ", " + quantity + ", " + available + ", " + type);
 
+  var individual = "individualProduct.php";
+
   var html = '<img class="ui top aligned small image" src="' + imagePath + '">' +
   '<a><h3>' + name + '</h3> <p>' + desc + '</p>' +
-  '<button class="ui button" onclick="addToCart('+ id + ');">Add to cart</button> </a>' +
+  '<button class="ui button" onclick="addToCart('+ id + ');">Add to cart</button></a>' +
   '<div class="ui tag labels">' +
-  '<a class="ui label"> $' + price + '</a> </div> <br> <div class="ui divider"></div>';
+  '<a class="ui label" onclick="goToIndividual('+ id +')"> $' + price + '</a> </div> <br> <div class="ui divider"></div>';
 
   return html;
 }

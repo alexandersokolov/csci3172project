@@ -4,7 +4,7 @@
     include_once "dbConnect.php";
 
     //Executing the query and fetching the results
-    $query = "SELECT * FROM comments";
+    $query = "SELECT * FROM comments WHERE id=$id";
     $result = $pdo->query($query);
 
     while($row = $result->fetch())

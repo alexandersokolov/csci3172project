@@ -103,3 +103,6 @@
     });
 
 </script>
+
+<!-- Semantic UI Javascript -->
+<script src="js/semanticFuncionality.js"></script>

@@ -1,3 +1,34 @@
+<?php
+
+if($_GET['id'])
+{
+    $id = $_GET['id'];
+
+
+    //Connecting to the database
+    include_once "include/dbConnect.php";
+
+    //Executing the query and fetching the results
+    $query = "SELECT * FROM products WHERE id=$id";
+    $result = $pdo->query($query);
+
+
+
+    $row = $result->fetch();
+
+    $name = $row['name'];
+    $imagePath = $row['imagePath'];
+    $description = $row['description'];
+    $price = $row['price'];
+
+
+
+
+}
+
+?>
+
+
 <html lang="en">
 <head>
 
@@ -62,10 +93,10 @@ include "include/shoppingModal.html"
 <div class="productView">
     <div class="ui stackable grid newGrid productBase">
         <div class="four wide column">
-            <img src="../csci3172project/media/macbook.png" alt="product Image"  class="individualImage">
+            <img src="../csci3172project/<?php echo $imagePath; ?>" alt="product Image"  class="individualImage">
 
             <div class="priceDiv">
-                <p>$CAD 9999</p>
+                <p>$CAD <?php echo $price; ?></p>
             </div>
 
             <div class="ui vertical button addCart" onclick="onClickAddCart()" tabindex="0">
@@ -76,11 +107,11 @@ include "include/shoppingModal.html"
         </div>
         <div class="twelve wide column">
             <div class="itemName">
-                <p>Macbook</p>
+                <p><?php echo "$name";?></p>
             </div>
 
             <div class="itemDescription">
-                <p>Lorem ipsum dolor sit amet, vis laudem feugait nusquam at, case utroque cu ius, et quo wisi aliquip delicata. Exerci explicari vituperatoribus ut pro, accumsan quaestio neglegentur ex est, altera eleifend in nam. Ne vim periculis mnesarchum, his sumo laudem postea ne, semper voluptatum assueverit mei te. Te epicuri atomorum duo. Id option imperdiet vituperata quo. Atqui laoreet ius eu, in nec lorem discere eleifend.</p>
+                <p><?php echo $description;?></p>
             </div>
         </div>
     </div>
@@ -122,7 +153,7 @@ include "include/shoppingModal.html"
     <script>
         //Username and id needs to be replaced later with real session variable
         var username = "<?php if(isset($_SESSION['username'])){echo $_SESSION['username'];} else{echo '';} ?>";
-        var productId = "<?php echo "1"; ?>";
+        var productId = "<?php echo $id; ?>";
         var rating;
 
     </script>
@@ -164,8 +195,12 @@ include "include/shoppingModal.html"
 </div>
 
 
+
+
+
 <!-- Semantic UI Javascript -->
 <script src="js/semanticFuncionality.js"></script>
+
 </body>
 
 <footer>
