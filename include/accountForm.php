@@ -32,7 +32,7 @@
     <label>Name</label>
     <div class="fields">
       <div class="eight wide field">
-        <input type="text" id="firstName" placeholder="First Name" value="<?php echo $firstName;s ?>">
+        <input type="text" id="firstName" placeholder="First Name" value="<?php echo $firstName; ?>">
       </div>
       <div class="eight wide field">
         <input type="text" id="lastName" placeholder="Last Name" value="<?php echo $lastName; ?>">
