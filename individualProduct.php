@@ -121,7 +121,7 @@ include "include/shoppingModal.html"
     <!-- Javascript that gets all of the information needed for a review -->
     <script>
         //Username and id needs to be replaced later with real session variable
-        var username = "<?php echo "tempUser"; ?>";
+        var username = "<?php if(isset($_SESSION['username'])){echo $_SESSION['username'];} else{echo '';} ?>";
         var productId = "<?php echo "1"; ?>";
         var rating;
 

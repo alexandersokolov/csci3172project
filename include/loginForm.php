@@ -1,8 +1,92 @@
-<?php
+<script>
 
- ?>
+    function validateLog()
+    {
+        //Small note: variable and form names indicate email, but in reality it is the username
+        var email = document.forms["logForm"]["email"].value;
+        var password = document.forms["logForm"]["password"].value;
 
- <div class="ui middle aligned center aligned grid">
+        //If email field is empty, adds error class
+        if (email == "")
+        {
+            var a = document.getElementById("emailField");
+            a.className += " error";
+        }
+        //If password is field is empty, adds error class
+        if(password == "")
+        {
+            var b = document.getElementById("passwordField");
+            b.className += " error";
+        }
+
+        //Removes error field/stays the same
+        if (email != "")
+        {
+            document.getElementById("emailField").className = "";
+            document.getElementById("emailField").className = "field";
+        }
+
+        if (password != "")
+        {
+            document.getElementById("passwordField").className = "";
+            document.getElementById("passwordField").className = "field";
+        }
+
+
+
+        if(email!="" && password !="")
+        {
+
+            //Storing the username and password in javascript objects then converting to JSON
+            var user = new Object();
+            user.email = email;
+            user.password = password;
+            var jsonString = JSON.stringify(user);
+
+            //Sending http request to the php file for validation
+            request = new XMLHttpRequest();
+            request.open("POST", "include/loginValidate.php", true);
+            request.setRequestHeader("Content-type", "application/json");
+
+            //Testing new way of doing stuff
+            request.send(jsonString);
+
+            request.onreadystatechange = processRequest;
+            function processRequest(e)
+            {
+                if (request.readyState == 4 && request.status == 200)
+                {
+                    var response = JSON.parse(request.responseText);
+                    console.log(response.answer);
+
+                    //If validation is true then php session variable should be set and the login modal should close
+                    if(response.answer=="true")
+                    {
+
+                        window.location.replace("./account.php");
+
+                        $('.ui.modal.login')
+                            .modal('hide')
+                        ;
+                    }
+
+
+                    //If validation is false then error message should appear
+                    if(response.answer=="false")
+                    {
+                        document.getElementById("failureMessage").style.display = "block";
+                    }
+
+                }
+            }
+
+
+        }
+    }
+</script>
+
+
+<div class="ui middle aligned center aligned grid">
      <div class="column">
          <h2 class="ui teal image header">
 
