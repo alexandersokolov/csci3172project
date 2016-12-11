@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 11, 2016 at 02:01 AM
+-- Generation Time: Dec 11, 2016 at 04:22 AM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -41,7 +41,7 @@ CREATE TABLE `creditcards` (
   `lastName` varchar(128) NOT NULL,
   `type` varchar(32) NOT NULL,
   `expMonth` varchar(3) NOT NULL,
-  `expYear` varchar(3) NOT NULL,
+  `expYear` varchar(5) NOT NULL,
   `csv` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
