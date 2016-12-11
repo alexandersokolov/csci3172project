@@ -64,7 +64,7 @@ function updateCart(){
              html += convertToCartHtml(response[i].id, response[i].name, response[i].description, response[i].imagePath, response[i].price, response[i].quantity);
 
           }
-          html += '<div class="ui fluid large teal submit button">Checkout</div>';
+          html += '<div class="ui fluid large teal submit button"><a href="checkout_page.php">Checkout</div>';
         }
         else{
           html = '<p>No items in your cart<p> <br> <div class="ui fluid large teal submit button">Checkout</div>';
