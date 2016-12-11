@@ -12,25 +12,29 @@ $data = file_get_contents("php://input");
 $data = json_decode($data, true);
 $id = $data['id'];
 $username = $data['username'];
-$rating = $data['rating'];
-$text = $data['text'];
-$date = $data['date'];
 
-//Sanitizing the data
-$username = mysql_fix_string($username);
-$rating = mysql_fix_string($rating);
-$text = mysql_fix_string($text);
-$data = mysql_fix_string($date);
+if($username!='')
+{
 
-echo "$id $username $rating $text $date";
+    $rating = $data['rating'];
+    $text = $data['text'];
+    $date = $data['date'];
 
+    //Sanitizing the data
+    $username = mysql_fix_string($username);
+    $rating = mysql_fix_string($rating);
+    $text = mysql_fix_string($text);
+    $data = mysql_fix_string($date);
 
-//Connecting to the database and executing SQL query
-$query = "INSERT INTO comments VALUES (?,?,?,?,?)";
-$statement = $pdo->prepare($query);
-$statement->execute(array($id,$username,$date,$text,$rating));
+    echo "$id $username $rating $text $date";
 
 
+    //Connecting to the database and executing SQL query
+    $query = "INSERT INTO comments VALUES (?,?,?,?,?)";
+    $statement = $pdo->prepare($query);
+    $statement->execute(array($id, $username, $date, $text, $rating));
+
+}
 
 
 
